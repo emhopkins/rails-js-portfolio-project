@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   	  resources :apartments, only: [:can_house_more_than_3_tenants]
     end
   end
+  resources :characteristics, only: [:show]
   resources :tenants
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
