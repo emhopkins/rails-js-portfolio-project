@@ -1,6 +1,9 @@
 class CharacteristicsController < ApplicationController
 	def show
-		@characteristics = Characteristic.all
-		render json: @characteristics
+		@characteristic = Characteristic.find(params[:id])
+		respond_to do |format|
+			format.html 
+			format.json { render json: @characteristic }
+		end
 	end
 end
