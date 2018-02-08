@@ -1,2 +1,13 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+$(document).ready(function () {
+
+	$('button#loadBuildings').click(function(event) {
+		var url = $(this).data("url")
+	$.get(url)
+	  .done(function( data ) {
+	    alert( "Data Loaded: " + data );
+	    console.log(data);
+	  });
+		$('#buildings').html()
+	});	
+});
+

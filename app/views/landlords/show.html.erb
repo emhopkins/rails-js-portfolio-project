@@ -2,6 +2,8 @@
 Name: <%= @landlord.name %>
 <br />
 <h4>Buildings</h4>
+<button id="loadBuildings" data-url="<%=landlord_buildings_path(@landlord)%>">Load Buildings</button>
+<div id="buildings"></div>
 <% if @buildings.empty? %>
 	<p>You have no buildings. Would you like to add a building?</p>
 <% else %>
