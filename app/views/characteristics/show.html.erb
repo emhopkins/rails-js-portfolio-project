@@ -1,5 +1,6 @@
 <h1>Characteristics</h1>
 
 <% if @characteristic %>
-	<p><%= @characteristic.name %></p>
+	<a href="#" class="js-next" data-id="<%=@characteristic.id%>">Next Characteristic</a>
+	<p class="name"><%= @characteristic.name %></p>
 <% end %>
