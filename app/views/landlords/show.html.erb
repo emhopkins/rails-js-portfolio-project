@@ -1,0 +1,21 @@
+<h2>Landlord Information</h2>
+Name: <%= @landlord.name %>
+<br />
+<h4>Buildings</h4>
+<% if @buildings.empty? %>
+	<p>You have no buildings. Would you like to add a building?</p>
+<% else %>
+	<p>Select a building to edit or add a new building. The buildings are listed in smallest to largest order</p>
+	<ul>
+		<% @buildings.smallest_to_largest.each do |b| %>
+			<li><%= link_to b.name, landlord_building_path(@landlord, b) %></li>
+		<% end %>
+	</ul>
+<% end %>
+<%= link_to 'Add Building', new_landlord_building_path(@landlord) %>
+<br />
+<%= link_to 'View your apartments that can house more than 3 tenants', can_house_more_than_3_tenants_path(@landlord) %>
+
+<%= link_to 'View all landlords', all_path %>
+
+

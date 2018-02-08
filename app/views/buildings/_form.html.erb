@@ -1,0 +1,29 @@
+<%= form_for @building, url: @url do |f| %>
+	Name: <%= f.text_field :name %><br /><br />
+	Address: <%= f.text_field :address %><br /><br />
+	Number of Apartments: <%= f.text_field :number_of_apartments %><br /><br />
+	<h4>Apartments:</h4>
+	<%= f.fields_for :apartments, @building.apartments do |a| %>
+		Unit: <%= a.text_field :unit %><br /><br /> 
+		Max Occupants: <%= a.text_field :max_occupants %><br /><br /> 
+		Rent: <%= a.text_field :rent %><br /><br /> 
+		Description: <%= a.text_field :description %><br /><br /> 
+		<%= a.collection_check_boxes :characteristic_ids, Characteristic.all, :id, :name %>
+		<br /><br />
+        <%= a.fields_for :characteristics, a.object.characteristics.build do |characteristics_fields| %>
+            <%= label_tag "Add New Characteristic:" %>
+            <%= characteristics_fields.text_field :name %>
+        <% end %>
+        <br /><br />
+		<% if a.object.apartment_characteristics.present? %>
+		    <%= a.fields_for :apartment_characteristics do |c| %>
+		      <%= c.object.characteristic.name %>
+		      - Quantity?
+		      <%= c.text_field :quantity %>
+		      <br />
+		    <% end %>
+	    <% end %>
+		<h3>----------------------------------------------------------------------------------------</h3>
+ 	<% end %> 
+    <%= f.submit %>
+<% end %>
