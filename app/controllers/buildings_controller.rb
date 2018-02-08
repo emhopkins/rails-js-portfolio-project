@@ -1,5 +1,11 @@
 class BuildingsController < ApplicationController
 
+	def index
+		@landlord = Landlord.find(params[:landlord_id])
+		@buildings = @landlord.buildings.all
+		render json: @buildings
+	end
+
 	def new
 		@landlord = Landlord.find(params[:landlord_id])
 		@building = Building.new

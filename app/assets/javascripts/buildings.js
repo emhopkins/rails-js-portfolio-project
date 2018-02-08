@@ -4,7 +4,6 @@ $(document).ready(function () {
 		var url = $(this).data("url")
 	$.get(url)
 	  .done(function( data ) {
-	    alert( "Data Loaded: " + data );
 	    console.log(data);
 	  });
 		$('#buildings').html()
