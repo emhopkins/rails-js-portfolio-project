@@ -8,6 +8,7 @@
 		<p>Your role is <%= current_user.role %>.</p>
 		<% if current_user.role == 'landlord' %>
 			<%= link_to('Manage Buildings', landlord_path(Landlord.find_by(user: current_user))) %>
+			<%= link_to('View and add apartment characteristics', characteristics_path) %>
 		<% end %>
 	<% end %>
 <% end %>
