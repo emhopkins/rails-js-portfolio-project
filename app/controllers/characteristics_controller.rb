@@ -6,7 +6,9 @@ class CharacteristicsController < ApplicationController
 
 	def new
 		@characteristic = Characteristic.new
-		render json: @characteristic
+		respond_to do |format|
+      format.js
+    end
 	end
 
 	def show
@@ -16,4 +18,8 @@ class CharacteristicsController < ApplicationController
 			format.json { render json: @characteristic }
 		end
 	end
+
+  def characteristics_params
+    params.require(:characteristic).permit(:name)
+  end	
 end
