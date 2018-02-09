@@ -7,13 +7,6 @@ Name: <%= @landlord.name %>
 <div id="buildings"></div>
 <% if @buildings.empty? %>
 	<p>You have no buildings. Would you like to add a building?</p>
-<% else %>
-	<p>Select a building to edit or add a new building. The buildings are listed in smallest to largest order</p>
-	<ul>
-		<% @buildings.smallest_to_largest.each do |b| %>
-			<li><%= link_to b.name, landlord_building_path(@landlord, b) %></li>
-		<% end %>
-	</ul>
 <% end %>
 <%= link_to 'Add Building', new_landlord_building_path(@landlord) %>
 <br />
