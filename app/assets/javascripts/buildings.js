@@ -36,6 +36,7 @@ Building.prototype.formatDisplay = function() {
 		apartmentsHtml += apartmentListItem
 	});
 	var buildingHtml = `<div><a href='${this.buildingUrl}'>${this.name}</a> located at address: ${this.address}</div>
+											<div>Apartments</div>
 											<ul>${apartmentsHtml}</ul>`;
 	return buildingHtml;
 };
@@ -48,6 +49,6 @@ function Apartment(apartment) {
 
 Apartment.prototype.formatDisplay = function() {
 	console.log(this)
-	var apartmentHtml = `<li>${this.unit}</li>`
+	var apartmentHtml = `<li>Unit: ${this.unit}, Description: ${this.description}</li>`
 	return apartmentHtml;
 };
