@@ -6,9 +6,22 @@ $(document).ready(function () {
 	  .done(function( data ) {
 	  	$('#buildings').html("");
 	    $.each(data, function(index, value) {
-			  var buildingPath = url + '/' + value["id"]
-			  $('#buildings').append(`<div><a href='${buildingPath}'>${value["name"]}</a></div>`)
+	    	var newBuilding = new Building(value, url);
+	    	var buildingHtml = newBuilding.formatDisplay();
+			  $('#buildings').append(buildingHtml)
 			});
 	  });
 	});	
 });
+
+function Building(building, url) {
+	this.id = building.id
+	this.name = building.name
+	this.address = building.address
+	this.buildingUrl = url + '/' + building.id
+};
+
+Building.prototype.formatDisplay = function() {
+	var postHtml = `<div><a href='${this.buildingUrl}'>${this.name}</a> located at address: ${this.address}</div>`;
+	return postHtml;
+};
