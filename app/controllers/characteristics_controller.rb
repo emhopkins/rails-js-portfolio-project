@@ -11,6 +11,11 @@ class CharacteristicsController < ApplicationController
     end
 	end
 
+	def create
+    @characteristic = Characteristic.create(characteristics_params)
+    render json: @characteristic
+	end
+
 	def show
 		@characteristic = Characteristic.find(params[:id])
 		respond_to do |format|
