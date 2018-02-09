@@ -20,8 +20,21 @@ $("#new_characteristic").submit(function(event) {
 	  	  data: params
 	    }).done(function( data ) {
 	    	console.log(data)
+	    	var newCharacteristic = new Characteristic(data);
+	    	var characteristicHtml = newCharacteristic.formatDisplay();
 	    	$("#newCharacteristic").remove();
-	    	$('#characteristics').append(data);
+	    	$('#characteristics').append(characteristicHtml);
 		});
 	};
 });
+
+function Characteristic(characteristic) {
+	this.name = characteristic.name
+	this.url = '/characteristics/' + characteristic.id
+}
+
+Characteristic.prototype.formatDisplay = function() {
+	console.log(this)
+	var characteristicHtml = `<div><a href="${this.url}">${this.name}</a></div>`
+	return characteristicHtml;
+};

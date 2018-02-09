@@ -8,7 +8,6 @@ $(document).ready(function () {
 	    $.each(data, function(index, value) {
 	    	var newBuilding = new Building(value, url);
 	    	
-	    	console.log(newBuilding)
 	    	var buildingHtml = newBuilding.formatDisplay();
 			  $('#buildings').append(buildingHtml)
 			});
