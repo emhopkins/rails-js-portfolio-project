@@ -4,6 +4,11 @@ class CharacteristicsController < ApplicationController
 		@characteristics = Characteristic.all
 	end
 
+	def new
+		@characteristic = Characteristic.new
+		render json: @characteristic
+	end
+
 	def show
 		@characteristic = Characteristic.find(params[:id])
 		respond_to do |format|
