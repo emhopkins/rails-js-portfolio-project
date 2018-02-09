@@ -1,2 +1,27 @@
 $("#newCharacteristic").html('<%= j render "characteristics/new" %>');
-
+$("#new_characteristic").submit(function(event) {
+	event.preventDefault();
+	console.log(this)
+	var name = $('#characteristic_name').val(); 
+	var params = $(this).serialize();
+	// var form = $('form .new_characteristic').val();
+	console.log(params)
+	if ( name === ""){
+		console.log(name)
+		$('#name .help-block').remove();
+		$('#name').prepend(`<div class="help-block">Please enter a name.</div>`);
+	}else {
+		// console.log(this)
+		// var params = $(this).serialize();
+		// console.log(params)
+		$.ajax({
+	      type: "POST",
+	      url: '/characteristics',
+	  	  data: params
+	    }).done(function( data ) {
+	    	console.log(data)
+	    	$("#newCharacteristic").remove();
+	    	$('#characteristics').append(data);
+		});
+	};
+});

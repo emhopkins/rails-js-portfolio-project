@@ -1,4 +1,7 @@
 <%= form_for @characteristic do |f| %>
-	<%= f.text_field :name %>
-	<%= f.submit %>
+	<div id="name">
+		<%= f.text_field :name %>
+	</div>
+	<%= f.submit "Create characteristic", id: :create_characteristic %>
 <% end %>
+
