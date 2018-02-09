@@ -1,0 +1,7 @@
+<h1>Apartment Characteristics</h1>
+<div id="characteristics"></div>
+<% if @characteristics %>
+	<% @characteristics.each do |c| %>
+		<div><%= link_to c.name, characteristic_path(c) %></div>
+	<% end %>
+<% end %>

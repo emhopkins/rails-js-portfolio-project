@@ -1,4 +1,9 @@
 class CharacteristicsController < ApplicationController
+
+	def index
+		@characteristics = Characteristic.all
+	end
+
 	def show
 		@characteristic = Characteristic.find(params[:id])
 		respond_to do |format|
