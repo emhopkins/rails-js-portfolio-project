@@ -5,12 +5,17 @@ $(document).ready(function () {
 	$.get(url)
 	  .done(function( data ) {
 	  	$('#buildings').html("");
+
+	  	// filtering from live coding
+	  	// const fillteredData = data.filter(element => element.name === 'Boathouse')
+
 	    $.each(data, function(index, value) {
 	    	var newBuilding = new Building(value, url);
 	    	
 	    	var buildingHtml = newBuilding.formatDisplay();
 			  $('#buildings').append(buildingHtml)
 			});
+
 	  });
 	});	
 });
@@ -20,12 +25,8 @@ function Building(building, url) {
 	this.name = building.name
 	this.address = building.address
 	this.buildingUrl = url + '/' + building.id
-	var apartment_objects_array = []
-	$.each(building.apartments, function() {
-		var newApartment = new Apartment(this)
-		apartment_objects_array.push(newApartment);
-	})
-	this.apartments = apartment_objects_array
+
+	this.apartments = building.apartments.map(e => new Apartment(e))
 };
 
 Building.prototype.formatDisplay = function() {

@@ -7,8 +7,8 @@ class CharacteristicsController < ApplicationController
 	def new
 		@characteristic = Characteristic.new
 		respond_to do |format|
-      format.js
-    end
+	      format.js
+	    end
 	end
 
 	def create
